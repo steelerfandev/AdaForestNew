@@ -1,4 +1,6 @@
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -7,6 +9,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Place extends JPanel implements MouseListener{
@@ -35,6 +38,7 @@ public class Place extends JPanel implements MouseListener{
 		}
 		
 		ii.setCoordinates(TLx, TLy, TRx, TRy, BLx, BLy, BRx, BRy);
+		
 		
 	}
 	
