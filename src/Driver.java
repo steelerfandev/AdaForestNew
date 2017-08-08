@@ -8,13 +8,14 @@ import javax.swing.UIManager;
 public class Driver {
 	
 	public static JFrame frame;
-	public static int numImage;
+	public static int count;
 	private static BufferedImage iconImage;
+	private static Place[] slides;
 	private static HomeScreen homescreen;
-	private static ExpScene expscene;
-	private static AdaRoom adaRoom;
 	
 	public static void main(String[] args){
+		slides = new Place[60];
+		
 		try{
 			iconImage = ImageIO.read(new File("icon.gif"));
 		}
@@ -42,33 +43,13 @@ public class Driver {
 		frame.setVisible(true);
 	}
 	
-	public static void removeHomeScreenFromPanel(){
-		homescreen.setVisible(false);
-	}
-	
-	public static void removeExpSceneFromPanel(){
-		expscene.setVisible(false);
-	}
-	
-	public static void removeAdaRoomFromPanel(){
-		adaRoom.setVisible(false);
-	}
-	
-	
-	
-	public static void addExpScene(){
-		expscene = new ExpScene();
-		
-		frame.add(expscene);
+	public static void removeAndAdd(){
+		slides[count].setVisible(false);
+		count ++;
+		frame.add(slides[count]);
 		frame.setVisible(true);
 	}
 	
-	public static void addAdasRoom(){
-		adaRoom = new AdaRoom();
-		
-		frame.add(adaRoom);
-		frame.setVisible(true);
-	}
 	
 }
 	
