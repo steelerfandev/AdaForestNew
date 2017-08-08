@@ -8,7 +8,7 @@ import javax.swing.UIManager;
 public class Driver {
 	
 	public static JFrame frame;
-	public static int count;
+	public static int count = 0;
 	private static BufferedImage iconImage;
 	private static Place[] slides;
 	private static HomeScreen homescreen;
@@ -41,6 +41,8 @@ public class Driver {
 		
 		frame.add(homescreen);
 		frame.setVisible(true);
+		
+		private place0 = new Place()
 	}
 	
 	public static void removeAndAdd(){
