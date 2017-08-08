@@ -17,7 +17,7 @@ public class HomeScreen extends JPanel {
 		JButton start = new JButton("Start Your Adventure");
 		
 		try{
-			image = ImageIO.read(new File("icon.gif")); //github comment
+			image = ImageIO.read(new File("homescreen.jpg")); //github comment
 		}
 		 catch (Exception e) { // catch dat exception
 				e.printStackTrace(); // idk what this does rly but just keep it
