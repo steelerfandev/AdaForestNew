@@ -60,7 +60,7 @@ public class AdaRoom extends JPanel implements MouseListener {
 			
 			//the image
 			try{
-				adasroom=ImageIO.read(new File("adasroom.jpg"));
+				adasroom=ImageIO.read(new File("adasroom(noarrow).jpg"));
 				adashouseinterior=ImageIO.read(new File("adashouseinterior.jpg"));
 				adashouseexterior=ImageIO.read(new File("adashouseexterior.jpg"));
 				
