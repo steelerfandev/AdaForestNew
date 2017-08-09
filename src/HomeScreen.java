@@ -34,6 +34,7 @@ public class HomeScreen extends JPanel {
 				JOptionPane.showMessageDialog(null, "START YOUR ADVENTURE!");
 				title.setText("");
 				start.hide();
+				Driver.removeAndAdd();
 			}
 
 		});
