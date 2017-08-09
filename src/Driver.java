@@ -11,7 +11,6 @@ public class Driver {
 	public static JFrame frame;
 	public static int count = 0;
 	private static BufferedImage iconImage;
-	private static Place[] slides;
 	private static HomeScreen homescreen;
 	private static Place place0, place1, place2, place3, place4, place5, place6, place7, place8, place9, place10, place11, place12, place13, place14, place15, place16, place17, place18, place19, place20, place21, place22, place23, place24, place25, place26, place27, place28, place29, place30, place31, place32, place33, place34, place35, place36, place37, place38, place39, place40, place41, place42, place43, place44, place45, place46, place47, place48, place49, place50, place51, place52, place53, place54, place55, place56, place57, place58;
 	private static ImageInfo ii;
