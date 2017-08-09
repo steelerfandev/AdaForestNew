@@ -61,8 +61,12 @@ public class Place extends JPanel implements MouseListener {
 					buttons[i].addActionListener(alBack);
 				}
 				
-				else{
+				else if(buttons[i].getText().equals("Next")){
 					buttons[i].addActionListener(alNext);
+				}
+				else {
+					buttons[i].addActionListener(alNext);
+					//switch statement goes here
 				}
 /*
 						case 0:
