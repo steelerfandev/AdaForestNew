@@ -18,6 +18,7 @@ public class Place extends JPanel implements MouseListener{
 	private String imageName;
 	private BufferedImage image;
 	private int position;
+	private int i;
 	
 	
 	public Place(ImageInfo ii, int pos, int TLx, int TLy, int TRx, int TRy, int BLx, int BLy, int BRx, int BRy, JButton... buttons){
@@ -36,7 +37,7 @@ public class Place extends JPanel implements MouseListener{
 		repaint();
 		
 		if(buttons != null){
-			for(int i = 0; i < buttons.length; i ++){
+			for(i = 0; i < buttons.length; i ++){
 				
 				buttons[i].addActionListener(new ActionListener() {
 					@Override // following method is in the original superclass and you

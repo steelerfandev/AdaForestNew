@@ -12,6 +12,7 @@ public class Driver {
 	private static BufferedImage iconImage;
 	private static Place[] slides;
 	private static HomeScreen homescreen;
+	private static Place place0;
 	
 	public static void main(String[] args){
 		slides = new Place[60];
@@ -42,7 +43,7 @@ public class Driver {
 		frame.add(homescreen);
 		frame.setVisible(true);
 		
-		private place0 = new Place()
+		place0 = new Place();
 	}
 	
 	public static void removeAndAdd(){
