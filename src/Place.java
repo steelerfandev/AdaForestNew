@@ -68,6 +68,5 @@ public enum Place {
 	END3, //^^^
 	END4, //^^^
 	LARGEBAGUETTEGAMES, //^^^
-	YOUWIN //^^^
-	
+	YOUWIN, //^^^
 }

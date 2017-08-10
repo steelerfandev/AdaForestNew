@@ -17,12 +17,18 @@ public class Custom extends JPanel implements MouseListener {
 	}
 
 	public void clear() {
-		for (JButton button : buttonList) {
-			button = null;
+		if(buttonList != null){
+			for (JButton button : buttonList) {
+				button = null;
+			}
 		}
-		image = null;
-		for (MouseCoords coord : rect) {
-			coord = null;
+		if(image != null){
+			image = null;
+		}
+		if(rect != null){
+			for (MouseCoords coord : rect) {
+				coord = null;
+			}
 		}
 	}
 
