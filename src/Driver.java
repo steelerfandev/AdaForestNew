@@ -529,7 +529,7 @@ public class Driver {
 				});
 				panel.addButton(askForInfo);
 			}
-			if (timeCheck.equals("readBook")) {
+			if (timeCheck.equals("read book")) {
 				timeCheck = "told about studich";
 				JButton askForInfo = new JButton("Ask where to find out about clean water");
 				askForInfo.setPreferredSize(new Dimension(160, 40));
@@ -738,10 +738,10 @@ public class Driver {
 			exit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					timeCheck = "read book";
 					Driver.load(Place.LIBRARY);
 				}
 			});
-			timeCheck = "read book";
 			panel.addButton(exit);
 		}
 
