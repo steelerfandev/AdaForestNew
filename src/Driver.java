@@ -1052,7 +1052,7 @@ public class Driver {
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.SCHOOL);
+					Driver.load(Place.GROCERY);
 				}
 			});
 			panel.addButton(goodbye);
@@ -1215,6 +1215,7 @@ public class Driver {
 		System.out.println("Click on the person to talk to them.");
 		MouseCoords talkToMayor = new MouseCoords(559, 161, 559 + 145, 161 + 199, Place.MAYORTALK0);
 		panel.addMouseCoords(talkToMayor);
+		
 		System.out.println("Click on the door to leave.");
 		MouseCoords leaveTownHall = new MouseCoords(0, 131, 180, 600, Place.TOWN1);
 		panel.addMouseCoords(leaveTownHall);
