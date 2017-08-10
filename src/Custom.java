@@ -22,8 +22,9 @@ public class Custom extends JPanel implements MouseListener {
 	public void clear() {
 		if (buttonList != null) {
 			for (JButton button : buttonList) {
-				button.hide();
+				button.setVisible(false);
 			}
+			buttonList=new ArrayList<>();
 		}
 		if (image != null) {
 			image = null;
@@ -31,11 +32,14 @@ public class Custom extends JPanel implements MouseListener {
 		if (rect != null) {
 			rect = new ArrayList<>();
 		}
+		System.out.println("cleared");
 	}
 
 	public void addButton(JButton b) {
 		buttonList.add(b);
 		super.add(b);
+		b.setVisible(true);
+		System.out.println("adf");
 		// do we have to set the buttons visible
 	}
 
