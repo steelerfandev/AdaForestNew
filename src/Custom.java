@@ -44,6 +44,12 @@ public class Custom extends JPanel implements MouseListener {
 		image = i;
 		repaint();
 	}
+	
+	public void addMouseCoords(MouseCoords... m){
+		for(MouseCoords mouseCoord : m){
+			rect.add(mouseCoord);
+		}
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -56,12 +62,27 @@ public class Custom extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		int mousex = e.getX();
 		int mousey = e.getY();
-		for(MouseCoords c: rect){
-			//FIND ME if there's a problem fix it
-			if(mousex >= c.getX1() && mousex <= c.getX2() && mousey >= c.getY1() && mousey <= c.getY2()){
-				Driver.load(c.getPlace());
+		if(rect.size() == 1){
+			for(int i = 0; i < 1; i++){
+				//FIND ME if there's a problem fix it
+				if(mousex >= rect.get(i).getX1() && mousex <= rect.get(i).getX2() && mousey >= rect.get(i).getY1() && mousey <= rect.get(i).getY2()){
+					Driver.load(rect.get(i).getPlace());
+				}
 			}
 		}
+		//FIND ME RECTANGLE
+		/*else if (rect.size() == 2) {
+			System.out.println(rect);
+			if (mousex >= rect.get(0).getX1() && mousex <= rect.get(0).getX2() && mousey >= rect.get(0).getY1()
+					&& mousey <= rect.get(0).getY2()) {
+				Driver.load(rect.get(0).getPlace());
+			}
+			if (mousex >= rect.get(1).getX1() && mousex <= rect.get(1).getX2() && mousey >= rect.get(1).getY1()
+					&& mousey <= rect.get(1).getY2()) {
+				Driver.load(rect.get(1).getPlace());
+			}
+		}*/
+		
 	}
 
 	@Override

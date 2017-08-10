@@ -46,6 +46,8 @@ public class Driver {
 	
 	static void load(Place place){
 		panel.clear();
+		panel.addMouseListener(panel);
+		
 		if(place == Place.HOMESCREEN){
 			try{
 			BufferedImage homescreen = ImageIO.read(new File("homescreen.jpg"));
@@ -63,7 +65,6 @@ public class Driver {
 				}
 			});
 			panel.addButton(play);
-			play.setVisible(true);
 		}
 		else if(place == Place.ADAFOREST1){
 			try{
@@ -99,16 +100,78 @@ public class Driver {
 					Driver.load(Place.ADAFOREST1);
 				}
 			});
-			panel.add(back);
+			panel.addButton(back);
 			JButton next = new JButton("Next");
 			next.setPreferredSize(new Dimension(90, 40));
 			next.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){
-					Driver.load(Place.ADAFOREST2);
+					Driver.load(Place.ADAFOREST3);
 				}
 			});
 			panel.addButton(next);
+		}
+		else if(place == Place.ADAFOREST3){
+			try{
+			BufferedImage adaforest2 = ImageIO.read(new File("adaforest3.jpg"));
+			panel.addImage(adaforest2);
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+			JButton back = new JButton("Back");
+			back.setPreferredSize(new Dimension(90, 40));
+			back.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e){
+					Driver.load(Place.ADAFOREST1);
+				}
+			});
+			panel.addButton(back);
+			JButton next = new JButton("Next");
+			next.setPreferredSize(new Dimension(90, 40));
+			next.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e){
+					Driver.load(Place.ADASROOM);
+				}
+			});
+			panel.addButton(next);
+		}
+		else if(place == Place.ADASROOM){
+			try{
+			BufferedImage adasroom = ImageIO.read(new File("adasroom.jpg"));
+			panel.addImage(adasroom);
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+			JButton back = new JButton("Back");
+			back.setPreferredSize(new Dimension(90, 40));
+			back.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e){
+					Driver.load(Place.ADAFOREST3);
+				}
+			});
+			panel.addButton(back);
+			System.out.println("Click on the door to leave the room.");
+			MouseCoords door = new MouseCoords(249, 221, 249 + 187, 600, Place.ADASHOUSEINTERIOR);
+			panel.addMouseCoords(door);
+		}
+		else if(place == Place.ADASHOUSEINTERIOR){
+			try{
+			BufferedImage adashouseinterior = ImageIO.read(new File("adashouseinterior.jpg"));
+			panel.addImage(adashouseinterior);
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+			System.out.println("Click on the left door to go outside.");
+			MouseCoords leftDoor = new MouseCoords(249, 221, 249 + 187, 600, Place.ADASHOUSEEXTERIOR);
+			System.out.println("Click on the right door to go back upstairs.");
+			MouseCoords rightDoor = new MouseCoords(249, 221, 249 + 187, 600, Place.ADASROOM);
+			panel.addMouseCoords(leftDoor, rightDoor);
 		}
 	}
 
