@@ -58,13 +58,16 @@ public enum Place {
 	MAYORTALK7, //^^^
 	MAYORTALK8, //^^^
 	MAYORTALK9, //^^^
-	DUMP, //42
-	DUMPTALK0, //43
-	DUMPTALK1, //44
-	DUMPTALK2, //45
-	
-	
-	
-	
+	DUMP, //^^^42
+	DUMPTALK0, //43^^^
+	DUMPTALK1, //44^^^
+	DUMPTALK2, //45^^^
+	BUILDTHATWALL, //^^^
+	END1, //^^^
+	END2, //^^^
+	END3, //^^^
+	END4, //^^^
+	LARGEBAGUETTEGAMES, //^^^
+	YOUWIN //^^^
 	
 }

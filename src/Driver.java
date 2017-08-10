@@ -39,7 +39,9 @@ public class Driver {
 	
 	static void load(Place place){
 		panel.clear();
-		
+		if(place == Place.HOMESCREEN){
+			
+		}
 	}
 
 }
