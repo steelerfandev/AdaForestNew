@@ -110,8 +110,7 @@ public class Driver {
 			try {
 				BufferedImage adaforest2 = ImageIO.read(new File("adaforest3.jpg"));
 				panel.addImage(adaforest2);
-			} 
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
@@ -463,8 +462,7 @@ public class Driver {
 				}
 			});
 			panel.addButton(toLibrary);
-		} 
-		else if (place == Place.LIBRARY) {
+		} else if (place == Place.LIBRARY) {
 			try {
 				BufferedImage library = ImageIO.read(new File("library.jpg"));
 				panel.addImage(library);
@@ -521,37 +519,563 @@ public class Driver {
 				});
 				panel.addButton(askForInfo);
 			}
+		}
 
-			else if (place == Place.LIBRARIANTALK0) {
-				try {
-					BufferedImage librarianTalk0 = ImageIO.read(new File("librarianTalk0.jpg"));
-					panel.addImage(librarianTalk0);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-				JButton back = new JButton("Back");
-				back.setPreferredSize(new Dimension(130, 40));
-				back.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.LIBRARIANTALK0);
-					}
-				});
-				panel.addButton(back);
-
-				JButton goodbye = new JButton("Goodbye");
-				back.setPreferredSize(new Dimension(130, 40));
-				back.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.LIBRARIANTALK0);
-					}
-				});
-				panel.addButton(back);
-
+		else if (place == Place.LIBRARIANTALK0) {
+			try {
+				BufferedImage librarianTalk0 = ImageIO.read(new File("librarianTalk0.jpg"));
+				panel.addImage(librarianTalk0);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 
+			JButton back = new JButton("Back");
+			back.setPreferredSize(new Dimension(130, 40));
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.LIBRARIANTALK0);
+				}
+			});
+			panel.addButton(back);
+
+			JButton goodbye = new JButton("Goodbye");
+			back.setPreferredSize(new Dimension(130, 40));
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.LIBRARIANTALK0);
+				}
+			});
+			panel.addButton(back);
+
+		}
+		/*else if(place==Place.MAYORTALK0){
+	try{
+	BufferedImage mayortalk0=ImageIO.read(new File("mayortalk0.jpg"));
+	panel.addImage(mayortalk0);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+if(timeCheck.equals("told about mayor")){
+JButton inquire = new JButton ("Inquire where to get clean water for trees");
+	inquire.addActionListener(new ActionListener(){
+	@Override
+	public void actionPerformed(ActionEvent e){
+		Driver.load(Place.MAYORTALK1);
+	}
+}};
+}else if(timeCheck.equals("know about dump runoff")){
+JButton talkAboutRunoff = new JButton("Tell the mayor about the dump runoff");
+talkAboutRunoff.addActionListener(new ActionListener(){
+	@Override
+	public void actionPerformed(ActionEvent e){
+		Driver.load(Place.MAYORTALK5);
+	}
+}};
+}else if(timeCheck.equals("have idea")){
+JButton idea = new JButton ("Tell the mayor you have an idea");
+	idea.addActionListener(new ActionListener(){
+	@Override
+	public void actionPerformed(ActionEvent e){
+		Driver.load(Place.MAYORTALK7);
+	}
+}};
+
+}
+
+else if(place==Place.MAYORTALK1){
+	try{
+	BufferedImage mayortalk1=ImageIO.read(new File("mayortalk1.jpg"));
+	panel.addImage(mayortalk1);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton thank = new JButton ("Thank the arrogant mayor");
+			//glad.setPreferredSize(newDimension(90,40));
+			thank.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALK2);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK2){
+	try{
+	BufferedImage mayortalk2=ImageIO.read(new File("mayortalk2.jpg"));
+	panel.addImage(mayortalk2);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton suggest = new JButton ("Mention the bike you saw outside and suggest a bike lane to encourage more bikes");
+			//glad.setPreferredSize(newDimension(90,40));
+			suggest.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALK3);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK3){
+	try{
+	BufferedImage mayortalk3=ImageIO.read(new File("mayortalk3.jpg"));
+	panel.addImage(mayortalk3);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton glad = new JButton ("Express that you are happy he likes the idea");
+			glad.setPreferredSize(newDimension(90,40));
+			glad.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALK4);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK4){
+	try{
+	BufferedImage mayortalk4=ImageIO.read(new File("mayortalk4.jpg"));
+	panel.addImage(mayortalk4);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton goodbye = new JButton ("Goodbye");
+			goodbye.setPreferredSize(newDimension(90,40));
+			goodbye.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.TOWNHALL);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK5){
+	try{
+	BufferedImage mayortalk5=ImageIO.read(new File("mayortalk5.jpg"));
+	panel.addImage(mayortalk5);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton idk = new JButton ("Admit you do not have an idea");
+			idk.setPreferredSize(newDimension(90,40));
+			idk.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALK6);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK6){
+	try{
+	BufferedImage mayortalk6=ImageIO.read(new File("mayortalk6.jpg"));
+	panel.addImage(mayortalk6);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton goodbye = new JButton ("Goodbye");
+			goodbye.setPreferredSize(newDimension(90,40));
+			goodbye.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.TOWNHALL);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK7){
+	try{
+	BufferedImage mayortalk7=ImageIO.read(new File("mayortalk7.jpg"));
+	panel.addImage(mayortalk7);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton barrier = new JButton ("Suggest building a barrier");
+			epa.setPreferredSize(newDimension(90,40));
+			epa.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALKS8);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK8){
+	try{
+	BufferedImage mayortalk8=ImageIO.read(new File("mayortalk8.jpg"));
+	panel.addImage(mayortalk8);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton epa = new JButton ("Suggest getting funding from the EPA");
+			epa.setPreferredSize(newDimension(90,40));
+			epa.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.MAYORTALKS9);
+		}
+	}};
+
+
+}
+
+else if(place==Place.MAYORTALK9){
+	try{
+	BufferedImage mayortalk9=ImageIO.read(new File("mayortalk9.jpg"));
+	panel.addImage(mayortalk9);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+JButton next = new JButton ("Next");
+			next.setPreferredSize(newDimension(90,40));
+			next.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.BUILDTHATWALL);
+		}
+	}};
+
+
+}
+
+else if(place==Place.DUMP){
+	try{
+	BufferedImage dump=ImageIO.read(new File("dump.jpg"));
+	panel.addImage(dump);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton back = new JButton ("Back");
+	back.setPreferredSize(newDimension(90,40));
+	back.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.ADASFOREST);
+		}
+	}};
+	JButton dumpman= new JButton("Talk to man");
+	dumpman.setPreferredSize(newDimension(90,40));
+	dumpman.addActionListener(newActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.DUMPTALK0);
+		}
+	}};
+}
+
+
+else if(place==Place.DUMPTALK0){
+	try{
+	BufferedImage dumptalk0= ImageIO.read(new File("dumpTalk0.jpg"));
+	panel.addImage(dumptalk0);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+
+	if(timeCheck.equals("told to find water source")){
+		
+		JButton idea = new JButton ("Ask about polluted water");
+				idea.setPreferredSize(newDimension(90,40));
+				idea.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e){
+					Driver.load(Place.DUMPTALK1);
+			}
+		}};
+	}else if(timeCheck.equals("told to get idea")){
+		JButton idea = new JButton ("Ask for idea on runoff pollution prevention");
+				idea.setPreferredSize(newDimension(90,40));
+				idea.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e){
+					Driver.load(Place.DUMPTALK2);
+			}
+		}};
+	}
+	JButton goodbye = new JButton ("Goodbye");
+			goodbye.setPreferredSize(newDimension(90,40));
+			goodbye.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.DUMP);
+		}
+	}};
+	
+	
+	panel.addButton(goodbye);
+	panel.addButton(idea);
+}
+
+else if(place==Place.DUMPTALK1){
+	try{
+	BufferedImage dumptalk1= ImageIO.read(new File("dumpTalk1.jpg"));
+	panel.addImage(dumptalk1);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton goodbye = new JButton ("Goodbye");
+		goodbye.setPreferredSize(newDimension(90,40));
+		goodbye.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.DUMP);
+		}
+	}};
+	JButton idea = new JButton ("Ask about polluted water");
+			idea.setPreferredSize(newDimension(90,40));
+			idea.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.DUMPTALK2);
+		}
+	}};
+	panel.addButton(goodbye);
+	panel.addButton(idea);
+}
+
+
+else if(place==Place.DUMPTALK1){
+	try{
+	BufferedImage dumptalk2= ImageIO.read(new File("dumpTalk2.jpg"));
+	panel.addImage(dumptalk2);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton idea = new JButton ("Ask how to prevent");
+			idea.setPreferredSize(newDimension(90,40));
+			idea.addActionListener(new ActionListener(){
+				@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.DUMPTALK2);
+		}
+	}};
+	panel.addButton(idea);
+}
+
+
+else if(place==Place.DUMPTALK2){
+	try{
+	BufferedImage dumptalk2= ImageIO.read(new File("dumpTalk2.jpg"));
+	panel.addImage(dumptalk2);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton goodbye = new JButton ("Goodbye");
+		goodbye.setPreferredSize(newDimension(90,40));
+		goodbye.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.DUMP);
+		}
+	}};
+	panel.addButton(goodbye);
+}
+
+
+else if(place==Place.BUILDTHATWALL){
+	try{
+	BufferedImage buildthatwall= ImageIO.read(new File("buildthatwall.jpg"));
+	panel.addImage(buildthatwall);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton next = new JButton ("Next");
+		next.setPreferredSize(newDimension(90,40));
+		next.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.END1);
+		}
+	}};
+	panel.addButton(next);
+}
+
+
+
+else if(place==Place.END1){
+	try{
+	BufferedImage end3= ImageIO.read(new File("end1.jpg"));
+	panel.addImage(end1);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton next = new JButton ("Next");
+		next.setPreferredSize(newDimension(90,40));
+		next.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.END2);
+		}
+	}};
+	panel.addButton(next);
+}
+
+
+
+else if(place==Place.END2){
+	try{
+	BufferedImage end3= ImageIO.read(new File("end2.jpg"));
+	panel.addImage(end2);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton back= new JButton ("Back");
+	back.setPreferredSize(newDimension(90,40));
+	back.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.END1);
+		}
+	}};
+	JButton next = new JButton ("Next");
+		next.setPreferredSize(newDimension(90,40));
+		next.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.END3);
+		}
+	}};
+	panel.addButton(next);
+	panel.addButton(back);
+}
+
+
+
+else if(place==Place.END3){
+	try{
+	BufferedImage end3= ImageIO.read(new File("end3.jpg"));
+	panel.addImage(end3);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton back= new JButton ("Back");
+	back.setPreferredSize(newDimension(90,40));
+	back.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.END2);
+		}
+	}};
+	JButton next = new JButton ("Next");
+		next.setPreferredSize(newDimension(90,40));
+		next.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.END4);
+		}
+	}};
+	panel.addButton(next);
+	panel.addButton(back);
+}
+
+
+
+else if(place==Place.END4){
+	try{
+	BufferedImage end4= ImageIO.read(new File("end4.jpg"));
+	panel.addImage(end4);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton back= new JButton ("Back");
+	back.setPreferredSize(newDimension(90,40));
+	back.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.END3);
+		}
+	}};
+	JButton next = new JButton ("Next");
+		next.setPreferredSize(newDimension(90,40));
+		next.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Driver.load(Place.LARGEBAGUETTEGAMES);
+		}
+	}};
+	panel.addButton(next);
+	panel.addButton(back);
+}
+
+
+
+
+else if(place==Place.LARGEBAGUETTEGAMES){
+	try{
+	BufferedImage largebaguettegames = ImageIO.read(new File("largebaguettegames.png"));
+	panel.addImage(largebaguettegames);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton next = new JButton ("Next");
+	next.setPreferredSize(newDimension(90,40));
+	next.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.YOUWIN);
+		}
+	}};
+	panel.addButton(next);
+}
+
+
+else if(place==Place.YOUWIN){
+	try{
+	BufferedImage youwin = ImageIO.read(new File("youwin.jpg"));
+	panel.addImage(youwin);
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	JButton returnHome = new JButton ("Return Home");
+	play.setPreferredSize(newDimension(90,40));
+	next.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			Driver.load(Place.HOMESCREEN);
+		}
+	}};
+	panel.addButton(returnHome);
+}*/
+		
 
 	}
 
