@@ -38,9 +38,8 @@ public class Driver {
 		frame.setResizable(false);
 		frame.setVisible(true); //sets window visible
 		
-		frame.add(panel);
-		frame.setVisible(true);
 		Driver.load(Place.HOMESCREEN);
+		frame.add(panel);
 		frame.setVisible(true);
 		
 	}

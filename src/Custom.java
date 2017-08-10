@@ -14,12 +14,14 @@ public class Custom extends JPanel implements MouseListener {
 
 	public Custom() {
 		super();
+		buttonList = new ArrayList<JButton>();
+		rect = new ArrayList<MouseCoords>();
 	}
 
 	public void clear() {
 		if(buttonList != null){
 			for (JButton button : buttonList) {
-				button = null;
+				button.hide();
 			}
 		}
 		if(image != null){
@@ -33,8 +35,8 @@ public class Custom extends JPanel implements MouseListener {
 	}
 
 	public void addButton(JButton b) {
-		buttonList.add(b);
-		super.add(b);
+			buttonList.add(b);
+			super.add(b);
 		// do we have to set the buttons visible
 	}
 
