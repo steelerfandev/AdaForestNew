@@ -14,7 +14,7 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		try {
-            BufferedImage bufferedImage = ImageIO.read(new File("icon.jpg"));
+            BufferedImage bufferedImage = ImageIO.read(new File("icon.gif"));
             frame.setIconImage(bufferedImage);
         } 
 		catch (IOException e) {
