@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class Driver {
+	
 	private static JFrame frame = new JFrame("Ada's Forest");
 	private static Custom panel = new Custom();
 	private static String timeCheck = "";
