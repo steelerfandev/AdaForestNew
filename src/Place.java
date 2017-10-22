@@ -14,6 +14,7 @@ public enum Place {
 	ADASTREE, //^^^ **************************
 	//ADAS HOUSE EXTERIOR BUTTON To Inside
 	MOMTALK0, //^^^ 9 BUTTON
+	LATER,
 	MOMTALK1, //^^^
 	MOMTALK2,  //^^^
 	MOMTALK3, //^^^

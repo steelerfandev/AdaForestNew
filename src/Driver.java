@@ -56,7 +56,7 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton play = new JButton("Play");
-			play.setPreferredSize(new Dimension(90, 40));
+			play.setPreferredSize(new Dimension(130, 40));
 			play.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -72,7 +72,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton next = new JButton("Next");
-			next.setPreferredSize(new Dimension(90, 40));
 			next.addActionListener(new ActionListener() {
 
 				@Override
@@ -89,7 +88,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -98,7 +96,6 @@ public class Driver {
 			});
 			panel.addButton(back);
 			JButton next = new JButton("Next");
-			next.setPreferredSize(new Dimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -114,7 +111,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
 			back.addActionListener(new ActionListener() {
 
 				@Override
@@ -124,7 +120,6 @@ public class Driver {
 			});
 			panel.addButton(back);
 			JButton next = new JButton("Next");
-			next.setPreferredSize(new Dimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -139,29 +134,16 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
-			back.addActionListener(new ActionListener() {
+
+			JButton toDownstairs = new JButton("Downstairs");
+			toDownstairs.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADAFOREST3);
+					Driver.load(Place.ADASHOUSEINTERIOR);
 				}
 			});
-			panel.addButton(back);
+			panel.addButton(toDownstairs);
 
-			System.out.println("Click on the door to leave the room.");
-			MouseCoords door = new MouseCoords(249, 221, 249 + 187, 600, Place.ADASHOUSEINTERIOR);
-			panel.addMouseCoords(door);
-
-			/*
-			 * JButton toDownstairs = new JButton("Downstairs");
-			 * toDownstairs.setPreferredSize(new Dimension(90, 40));
-			 * toDownstairs.addActionListener(new ActionListener() {
-			 * 
-			 * @Override public void actionPerformed(ActionEvent e) {
-			 * Driver.load(Place.ADASHOUSEINTERIOR); } });
-			 */
-			// panel.addButton(toDownstairs);
 		} else if (place == Place.ADASHOUSEINTERIOR) {
 			try {
 				BufferedImage adashouseinterior = ImageIO.read(new File("adashouseinterior.jpg"));
@@ -169,45 +151,8 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back To Room");
-			back.setPreferredSize(new Dimension(120, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASROOM);
-				}
-			});
-			panel.addButton(back);
-			if (timeCheck == "") {
-				JButton talkToMom = new JButton("Talk To Mom");
-				talkToMom.setPreferredSize(new Dimension(120, 40));
-				talkToMom.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.MOMTALK1);
-					}
-				});
-				panel.addButton(talkToMom);
-			}
 
-			else if (timeCheck.equals("saw tree")) {
-				JButton talkToMom = new JButton("Talk To Mom");
-				talkToMom.setPreferredSize(new Dimension(120, 40));
-				talkToMom.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.MOMTALK0);
-					}
-				});
-				panel.addButton(talkToMom);
-			}
-			/*
-			 * System.out.println("Click on the left door to go outside.");
-			 * MouseCoords leftDoor = new MouseCoords(249, 221, 249 + 187, 600,
-			 * Place.ADASHOUSEEXTERIOR); panel.addMouseCoords(leftDoor);
-			 */
 			JButton toOutside = new JButton("To Outside");
-			toOutside.setPreferredSize(new Dimension(90, 40));
 			toOutside.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -216,6 +161,35 @@ public class Driver {
 			});
 			panel.addButton(toOutside);
 
+			if (timeCheck == "") {
+				JButton talkToMom = new JButton("Talk To Mom");
+				talkToMom.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.MOMTALK1);
+					}
+				});
+				panel.addButton(talkToMom);
+			} else {
+
+				JButton talkToMom = new JButton("Talk To Mom");
+				talkToMom.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.MOMTALK0);
+					}
+				});
+				panel.addButton(talkToMom);
+			}
+			JButton back = new JButton("Back To Room");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.ADASROOM);
+				}
+			});
+			panel.addButton(back);
+
 		} else if (place == Place.ADASHOUSEEXTERIOR) {
 			try {
 				BufferedImage adashouseexterior = ImageIO.read(new File("adashouseexterior.jpg"));
@@ -223,26 +197,8 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back Inside");
-			back.setPreferredSize(new Dimension(90, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASHOUSEINTERIOR);
-				}
-			});
-			panel.addButton(back);
-			JButton toForest = new JButton("To Forest");
-			toForest.setPreferredSize(new Dimension(120, 40));
-			toForest.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASFOREST);
-				}
-			});
-			panel.addButton(toForest);
+
 			JButton toTown = new JButton("To Town");
-			toTown.setPreferredSize(new Dimension(100, 40));
 			toTown.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -250,6 +206,24 @@ public class Driver {
 				}
 			});
 			panel.addButton(toTown);
+
+			JButton back = new JButton("Back Inside");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.ADASHOUSEINTERIOR);
+				}
+			});
+			panel.addButton(back);
+
+			JButton toForest = new JButton("To Forest");
+			toForest.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.ADASFOREST);
+				}
+			});
+			panel.addButton(toForest);
 		}
 
 		else if (place == Place.ADASFOREST) {
@@ -260,7 +234,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -268,15 +241,38 @@ public class Driver {
 				}
 			});
 			panel.addButton(back);
-			JButton explore = new JButton("Explore");
-			explore.setPreferredSize(new Dimension(120, 40));
-			explore.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASTREE);
-				}
-			});
-			panel.addButton(explore);
+			if (timeCheck.equals("")) {
+				JButton explore = new JButton("Explore");
+				explore.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.ADASTREE);
+					}
+				});
+				panel.addButton(explore);
+			}
+			
+
+			if (timeCheck.equals("told to find water source")) {
+				JButton distance = new JButton("What is that place in the distance?");
+				distance.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.DUMP);
+					}
+				});
+				panel.addButton(distance);
+			}
+			if(timeCheck.equals("told to get idea")){
+				JButton distance = new JButton("Dump");
+				distance.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.DUMP);
+					}
+				});
+				panel.addButton(distance);
+			}
 		}
 
 		else if (place == Place.ADASTREE) {
@@ -287,7 +283,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -307,7 +302,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -315,15 +309,44 @@ public class Driver {
 				}
 			});
 			panel.addButton(goodbye);
-			JButton theTreesAreSick = new JButton("Tell Mom about sick trees");
-			theTreesAreSick.setPreferredSize(new Dimension(160, 40));
-			theTreesAreSick.addActionListener(new ActionListener() {
+
+			if (timeCheck.equals("saw tree")) {
+				JButton theTreesAreSick = new JButton("Tell Mom about sick trees");
+				theTreesAreSick.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.MOMTALK2);
+					}
+				});
+				panel.addButton(theTreesAreSick);
+			}
+
+			if (timeCheck.equals("told to get idea")) {
+				JButton idk = new JButton("Ask for idea on runoff pollution prevention");
+				idk.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.MOMTALK3);
+					}
+				});
+				panel.addButton(idk);
+			}
+		}
+		else if(place==Place.MOMTALK3){
+			try {
+				BufferedImage momTalk3 = ImageIO.read(new File("momTalk3.jpg"));
+				panel.addImage(momTalk3);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			JButton goodbye = new JButton("Goodbye");
+			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.MOMTALK2);
+					Driver.load(Place.ADASHOUSEINTERIOR);
 				}
 			});
-			panel.addButton(theTreesAreSick);
+			panel.addButton(goodbye);
 		}
 
 		else if (place == Place.MOMTALK1) {
@@ -334,7 +357,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -351,17 +373,15 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+/*			JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MOMTALK0);
 				}
 			});
-			panel.addButton(back);
+			panel.addButton(back);*/
 			JButton thanks = new JButton("Goodbye");
-			thanks.setPreferredSize(new Dimension(110, 40));
 			thanks.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -378,17 +398,7 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back to Home");
-			back.setPreferredSize(new Dimension(130, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASHOUSEEXTERIOR);
-				}
-			});
-			panel.addButton(back);
 			JButton toTown2 = new JButton("To West Town");
-			toTown2.setPreferredSize(new Dimension(140, 40));
 			toTown2.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -397,8 +407,16 @@ public class Driver {
 			});
 			panel.addButton(toTown2);
 
+			JButton toSchool = new JButton("To School");
+			toSchool.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.SCHOOL);
+				}
+			});
+			panel.addButton(toSchool);
+
 			JButton toTownHall = new JButton("To Town Hall");
-			toTownHall.setPreferredSize(new Dimension(140, 40));
 			toTownHall.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -407,15 +425,14 @@ public class Driver {
 			});
 			panel.addButton(toTownHall);
 
-			JButton toSchool = new JButton("To School");
-			toSchool.setPreferredSize(new Dimension(140, 40));
-			toSchool.addActionListener(new ActionListener() {
+			JButton back = new JButton("Back to Home");
+			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.SCHOOL);
+					Driver.load(Place.ADASHOUSEEXTERIOR);
 				}
 			});
-			panel.addButton(toSchool);
+			panel.addButton(back);
 		}
 
 		else if (place == Place.TOWN2) {
@@ -425,27 +442,8 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back to Home");
-			back.setPreferredSize(new Dimension(130, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.ADASHOUSEEXTERIOR);
-				}
-			});
-			panel.addButton(back);
-			JButton toTown1 = new JButton("To East Town");
-			toTown1.setPreferredSize(new Dimension(140, 40));
-			toTown1.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.TOWN1);
-				}
-			});
-			panel.addButton(toTown1);
 
 			JButton toGroceryStore = new JButton("To Grocery Store");
-			toGroceryStore.setPreferredSize(new Dimension(160, 40));
 			toGroceryStore.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -455,7 +453,6 @@ public class Driver {
 			panel.addButton(toGroceryStore);
 
 			JButton toLibrary = new JButton("To Library");
-			toLibrary.setPreferredSize(new Dimension(140, 40));
 			toLibrary.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -463,6 +460,16 @@ public class Driver {
 				}
 			});
 			panel.addButton(toLibrary);
+
+			JButton toTown1 = new JButton("To East Town");
+			toTown1.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.TOWN1);
+				}
+			});
+			panel.addButton(toTown1);
+
 		} else if (place == Place.LIBRARY) {
 			try {
 				BufferedImage library = ImageIO.read(new File("library.jpg"));
@@ -470,18 +477,8 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back to Town");
-			back.setPreferredSize(new Dimension(130, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.TOWN2);
-				}
-			});
-			panel.addButton(back);
 
 			JButton talkToLibrarian = new JButton("Talk to the Librarian, Ms. Church");
-			talkToLibrarian.setPreferredSize(new Dimension(200, 40));
 			talkToLibrarian.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -490,15 +487,25 @@ public class Driver {
 			});
 			panel.addButton(talkToLibrarian);
 
-			JButton openBook = new JButton("Open Book");
-			openBook.setPreferredSize(new Dimension(130, 40));
-			openBook.addActionListener(new ActionListener() {
+			JButton back = new JButton("Back to Town");
+			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.BOOK1);
+					Driver.load(Place.TOWN2);
 				}
 			});
-			panel.addButton(openBook);
+			panel.addButton(back);
+
+			if (timeCheck.equals("talked to librarian")) {
+				JButton openBook = new JButton("Open Book");
+				openBook.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.BOOK1);
+					}
+				});
+				panel.addButton(openBook);
+			}
 
 		}
 
@@ -511,7 +518,6 @@ public class Driver {
 			}
 
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(130, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -522,7 +528,6 @@ public class Driver {
 
 			if (timeCheck.equals("saw tree")) {
 				JButton askForInfo = new JButton("Ask for information on trees");
-				askForInfo.setPreferredSize(new Dimension(130, 40));
 				askForInfo.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -534,7 +539,6 @@ public class Driver {
 			if (timeCheck.equals("read book")) {
 				timeCheck = "told about studich";
 				JButton askForInfo = new JButton("Ask where to find out about clean water");
-				askForInfo.setPreferredSize(new Dimension(160, 40));
 				askForInfo.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -543,6 +547,32 @@ public class Driver {
 				});
 				panel.addButton(askForInfo);
 			}
+			if (timeCheck.equals("told to get idea")) {
+				JButton desole = new JButton("Ask for idea on runoff pollution prevention");
+				desole.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.LIBRARIANTALK4);
+					}
+				});
+				panel.addButton(desole);
+			}
+		}
+		else if(place==Place.LIBRARIANTALK4){
+			try {
+				BufferedImage librarianTalk4 = ImageIO.read(new File("librarianTalk4.jpg"));
+				panel.addImage(librarianTalk4);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			JButton goodbye = new JButton("Goodbye");
+			goodbye.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.LIBRARY);
+				}
+			});
+			panel.addButton(goodbye);
 		}
 
 		else if (place == Place.LIBRARIANTALK1) {
@@ -553,22 +583,21 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.LIBRARIANTALK0);
 				}
 			});
-			panel.addButton(back);
+			panel.addButton(back);*/
 
 			if (timeCheck.equals("saw tree")) {
 				JButton goBackToOpenBook = new JButton("Go back to open book");
-				goBackToOpenBook.setPreferredSize(new Dimension(150, 40));
 				goBackToOpenBook.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						timeCheck = "talked to librarian";
 						Driver.load(Place.LIBRARY);
 					}
 				});
@@ -584,18 +613,7 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
-			back.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.LIBRARY);
-				}
-			});
-			panel.addButton(back);
-
 			JButton next = new JButton("Next Page");
-			next.setPreferredSize(new Dimension(150, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -612,7 +630,6 @@ public class Driver {
 			}
 
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -622,7 +639,6 @@ public class Driver {
 			panel.addButton(back);
 
 			JButton next = new JButton("Next Page");
-			next.setPreferredSize(new Dimension(150, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -641,7 +657,7 @@ public class Driver {
 			}
 
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
+
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -651,7 +667,6 @@ public class Driver {
 			panel.addButton(back);
 
 			JButton next = new JButton("Next Page");
-			next.setPreferredSize(new Dimension(150, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -670,7 +685,6 @@ public class Driver {
 			}
 
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -680,7 +694,6 @@ public class Driver {
 			panel.addButton(back);
 
 			JButton next = new JButton("Next Page");
-			next.setPreferredSize(new Dimension(150, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -697,7 +710,6 @@ public class Driver {
 			}
 
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -707,10 +719,10 @@ public class Driver {
 			panel.addButton(back);
 
 			JButton exit = new JButton("Exit Book");
-			exit.setPreferredSize(new Dimension(150, 40));
 			exit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					timeCheck = "read book";
 					Driver.load(Place.LIBRARY);
 				}
 			});
@@ -726,7 +738,6 @@ public class Driver {
 			}
 
 			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(130, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -736,7 +747,6 @@ public class Driver {
 			panel.addButton(back);
 
 			JButton exit = new JButton("Exit Book");
-			exit.setPreferredSize(new Dimension(150, 40));
 			exit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -756,7 +766,6 @@ public class Driver {
 			}
 
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(150, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -774,8 +783,7 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton recycle = new JButton("Remind Mrs. Church to recycle your receipt");
-			recycle.setPreferredSize(new Dimension(250, 40));
+			JButton recycle = new JButton("Remind Mrs. Church to recycle her receipt");
 			recycle.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -794,7 +802,6 @@ public class Driver {
 			}
 
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(130, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -813,17 +820,15 @@ public class Driver {
 			}
 
 			JButton toTown = new JButton("Back to Town");
-			toTown.setPreferredSize(new Dimension(170, 40));
 			toTown.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.TOWN2);
+					Driver.load(Place.TOWN1);
 				}
 			});
 			panel.addButton(toTown);
 
 			JButton talkToStudich = new JButton("Talk to Professor Studich");
-			talkToStudich.setPreferredSize(new Dimension(170, 40));
 			talkToStudich.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -841,20 +846,17 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			if (timeCheck.equals("") || timeCheck.equals("saw tree") || timeCheck.equals("read book")) {
-				JButton goodbye = new JButton("Goodbye");
-				goodbye.setPreferredSize(new Dimension(170, 40));
-				goodbye.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.SCHOOL);
-					}
-				});
-				panel.addButton(goodbye);
-			}
+			JButton goodbye = new JButton("Goodbye");
+			goodbye.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.SCHOOL);
+				}
+			});
+			panel.addButton(goodbye);
+
 			if (timeCheck.equals("told about studich")) {
 				JButton talkToStudich = new JButton("Ask why trees get sick from polluted water");
-				talkToStudich.setPreferredSize(new Dimension(250, 40));
 				talkToStudich.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -863,37 +865,70 @@ public class Driver {
 				});
 				panel.addButton(talkToStudich);
 			}
-		} else if (place == Place.STUDICHTALK0) {
+			if (timeCheck.equals("told to get idea")) {
+				JButton idea = new JButton("Ask for idea on runoff pollution prevention");
+				idea.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.STUDICHTALK4);
+					}
+				});
+				panel.addButton(idea);
+			}
+		} else if (place == Place.STUDICHTALK4) {
 			try {
-				BufferedImage studichTalk0 = ImageIO.read(new File("studichTalk0.jpg"));
-				panel.addImage(studichTalk0);
+				BufferedImage studichTalk4 = ImageIO.read(new File("studichTalk4.jpg"));
+				panel.addImage(studichTalk4);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			if (timeCheck.equals("") || timeCheck.equals("saw tree") || timeCheck.equals("read book")) {
-				JButton goodbye = new JButton("Goodbye");
-				goodbye.setPreferredSize(new Dimension(170, 40));
-				goodbye.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.SCHOOL);
-					}
-				});
-				panel.addButton(goodbye);
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.SCHOOL);
+				}
+			});
+			panel.addButton(back);*/
+
+			JButton yes = new JButton("Yes!");
+			yes.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.STUDICHTALK5);
+				}
+			});
+			panel.addButton(yes);
+		} else if (place == Place.STUDICHTALK5) {
+			try {
+				BufferedImage studichTalk5 = ImageIO.read(new File("studichTalk5.jpg"));
+				panel.addImage(studichTalk5);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			if (timeCheck.equals("told about studich")) {
-				JButton talkToStudich = new JButton("Ask why trees get sick from polluted water");
-				talkToStudich.setPreferredSize(new Dimension(250, 40));
-				talkToStudich.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.STUDICHTALK1);
-					}
-				});
-				panel.addButton(talkToStudich);
-			}
-		} else if (place == Place.STUDICHTALK1) {
+
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.STUDICHTALK4);
+				}
+			});
+			panel.addButton(back);*/
+
+			JButton thx = new JButton("Thank you!");
+			thx.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.SCHOOL);
+					timeCheck = "have idea";
+				}
+			});
+			panel.addButton(thx);
+		}
+
+		else if (place == Place.STUDICHTALK1) {
 			try {
 				BufferedImage studichTalk1 = ImageIO.read(new File("studichTalk1.jpg"));
 				panel.addImage(studichTalk1);
@@ -901,17 +936,15 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.STUDICHTALK0);
 				}
-			});
-			panel.addButton(back);
+			});*/
+/*			panel.addButton(back);*/
 			JButton talkToStudich = new JButton("Ask where to get clean water");
-			talkToStudich.setPreferredSize(new Dimension(250, 40));
 			talkToStudich.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -929,17 +962,15 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.STUDICHTALK1);
 				}
-			});
-			panel.addButton(back);
+			});*/
+			/*panel.addButton(back);*/
 			JButton suggestReuse = new JButton("Suggest that Professor Studich use a reusable coffee cup");
-			suggestReuse.setPreferredSize(new Dimension(250, 40));
 			suggestReuse.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -957,21 +988,19 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.STUDICHTALK2);
 				}
-			});
-			panel.addButton(back);
+			});*/
+			/*panel.addButton(back);*/
 			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(250, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.STUDICHTALK3);
+					Driver.load(Place.SCHOOL);
 				}
 			});
 			panel.addButton(goodbye);
@@ -985,18 +1014,7 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton toTown = new JButton("Back To Town");
-			toTown.setPreferredSize(new Dimension(90, 40));
-			toTown.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.TOWN2);
-				}
-			});
-			panel.addButton(toTown);
-
 			JButton talkToStiles = new JButton("Talk to Mr. Stiles");
-			talkToStiles.setPreferredSize(new Dimension(160, 40));
 			talkToStiles.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1004,6 +1022,15 @@ public class Driver {
 				}
 			});
 			panel.addButton(talkToStiles);
+
+			JButton toTown = new JButton("Back To Town");
+			toTown.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.TOWN2);
+				}
+			});
+			panel.addButton(toTown);
 
 		}
 
@@ -1015,21 +1042,18 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			if (timeCheck.equals("") || timeCheck.equals("saw tree") || timeCheck.equals("read book")
-					|| timeCheck.equals("told about studich")) {
-				JButton goodbye = new JButton("Goodbye");
-				goodbye.setPreferredSize(new Dimension(140, 40));
-				goodbye.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Driver.load(Place.GROCERY);
-					}
-				});
-				panel.addButton(goodbye);
-			}
+			JButton goodbye = new JButton("Goodbye");
+			goodbye.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.GROCERY);
+				}
+			});
+			panel.addButton(goodbye);
+
 			if (timeCheck.equals("told about stiles")) {
 				JButton talkToStiles = new JButton("Ask where Mr. Stiles gets his clean water");
-				talkToStiles.setPreferredSize(new Dimension(250, 40));
+
 				talkToStiles.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1037,6 +1061,16 @@ public class Driver {
 					}
 				});
 				panel.addButton(talkToStiles);
+			}
+			if(timeCheck.equals("told to get idea")){
+				JButton ask=new JButton("Ask for idea on runoff pollution prevention");
+				ask.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e){
+						Driver.load(Place.GROCERTALK6);
+					}
+				});
+				panel.addButton(ask);
 			}
 
 		} else if (place == Place.GROCERTALK1) {
@@ -1047,17 +1081,15 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.GROCERTALK0);
 				}
 			});
-			panel.addButton(back);
+			panel.addButton(back);*/
 			JButton talkToStiles = new JButton("Ask where you could get clean water");
-			talkToStiles.setPreferredSize(new Dimension(230, 40));
 			talkToStiles.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1074,17 +1106,15 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+			/*JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.GROCERTALK1);
 				}
 			});
-			panel.addButton(back);
+			panel.addButton(back);*/
 			JButton talkToStiles = new JButton("Explain tree situation to Mr. Stiles");
-			talkToStiles.setPreferredSize(new Dimension(230, 40));
 			talkToStiles.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1100,24 +1130,23 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			JButton back = new JButton("Back");
-			back.setPreferredSize(new Dimension(90, 40));
+		/*	JButton back = new JButton("Back");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.GROCERTALK2);
 				}
-			});
-			panel.addButton(back);
-			JButton goodbye = new JButton("Goodbye");
-			goodbye.setPreferredSize(new Dimension(230, 40));
+			});*/
+			/*panel.addButton(back);*/
+			JButton goodbye = new JButton("Okay");
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.GROCERY);
+					Driver.load(Place.APPLE);
 				}
 			});
 			panel.addButton(goodbye);
+			
 		} else if (place == Place.GROCERTALK5) {
 			try {
 				BufferedImage grocerTalk5 = ImageIO.read(new File("grocerTalk5.jpg"));
@@ -1125,14 +1154,18 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
 			JButton goodbye = new JButton("Goodbye");
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					timeCheck = "told about mayor";
 					Driver.load(Place.GROCERY);
+					
 
 				}
 			});
+			panel.addButton(goodbye);
 		}
 
 		else if (place == Place.GROCERTALK6) {
@@ -1149,6 +1182,7 @@ public class Driver {
 					Driver.load(Place.GROCERY);
 				}
 			});
+			panel.addButton(goodbye);
 		}
 
 		else if (place == Place.APPLE) {
@@ -1158,13 +1192,47 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton next = new JButton("Next");
+			JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.GROCERTALK3);
+				}
+			});
+			JButton next = new JButton("Tell Mr. Stiles that composting his apple would be better for the environment");
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.GROCERTALK4);
 				}
 			});
+			panel.addButton(back);
+			panel.addButton(next);
+
+		}
+
+		else if (place == Place.GROCERTALK4) {
+			try {
+				BufferedImage grocerTalk4 = ImageIO.read(new File("grocerTalk4.jpg"));
+				panel.addImage(grocerTalk4);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		/*	JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.APPLE);
+				}
+			});*/
+			JButton next = new JButton("Suggest adding a store compost bin");
+			next.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.GROCERTALK5);
+				}
+			});
+			panel.addButton(next);
 
 		}
 
@@ -1175,13 +1243,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Click on the person to talk to them.");
-			MouseCoords talkToMayor = new MouseCoords(559, 161, 559 + 145, 161 + 199, Place.MAYORTALK0);
-			panel.addMouseCoords(talkToMayor);
+			JButton toTown = new JButton("Back to Town");
+			toTown.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.TOWN1);
+				}
+			});
+			panel.addButton(toTown);
 
-			System.out.println("Click on the door to leave.");
-			MouseCoords leaveTownHall = new MouseCoords(0, 131, 180, 600, Place.TOWN1);
-			panel.addMouseCoords(leaveTownHall);
+			JButton talkToAkshath = new JButton("Talk to Mayor Akshath");
+			talkToAkshath.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK0);
+				}
+			});
+			panel.addButton(talkToAkshath);
 		}
 
 		else if (place == Place.MAYORTALK0) {
@@ -1198,7 +1276,8 @@ public class Driver {
 						}
 					});
 					panel.addButton(inquire);
-				} else if (timeCheck.equals("know about dump runoff")) {
+				}
+				if (timeCheck.equals("know about dump runoff")) {
 					JButton talkAboutRunoff = new JButton("Tell the mayor about the dump runoff");
 					talkAboutRunoff.addActionListener(new ActionListener() {
 						@Override
@@ -1207,7 +1286,8 @@ public class Driver {
 						}
 					});
 					panel.addButton(talkAboutRunoff);
-				} else if (timeCheck.equals("have idea")) {
+				}
+				if (timeCheck.equals("have idea")) {
 					JButton idea = new JButton("Tell the mayor you have an idea");
 					idea.addActionListener(new ActionListener() {
 						@Override
@@ -1217,19 +1297,18 @@ public class Driver {
 					});
 					panel.addButton(idea);
 
-				} else if (timeCheck.equals("")) {
-					System.out.println("goodbye");
-					JButton goodbye = new JButton("Goodbye");
-					goodbye.setPreferredSize(new Dimension(90, 40));
-					goodbye.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							Driver.load(Place.TOWNHALL);
-						}
-					});
-
-					panel.addButton(goodbye);
 				}
+
+				//System.out.println("goodbye");
+				JButton goodbye = new JButton("Goodbye");
+				goodbye.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Driver.load(Place.TOWNHALL);
+					}
+				});
+
+				panel.addButton(goodbye);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -1243,14 +1322,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK0);
+				}
+			});
+			panel.addButton(back);
+*/
 			JButton thank = new JButton("Thank the arrogant mayor");
-			// glad.setPreferredSize(newDimension(90,40));
 			thank.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK2);
 				}
 			});
+			panel.addButton(thank);
 
 		}
 
@@ -1261,16 +1349,22 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton suggest = new JButton(
-					"Mention the bike you saw outside and suggest a bike lane to encourage more bikes");
-			// glad.setPreferredSize(newDimension(90,40));
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK1);
+				}
+			});*/
+			/*panel.addButton(back);*/
+			JButton suggest = new JButton("Mention the bike you saw outside & suggest that the town build a bike lane");
 			suggest.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK3);
 				}
 			});
-
+			panel.addButton(suggest);
 		}
 
 		else if (place == Place.MAYORTALK3) {
@@ -1280,32 +1374,51 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK2);
+				}
+			});
+			panel.addButton(back);*/
+
 			JButton glad = new JButton("Express that you are happy he likes the idea");
-			// glad.setPreferredSize(newDimension(90, 40));
 			glad.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK4);
 				}
 			});
+			panel.addButton(glad);
 
 		}
 
 		else if (place == Place.MAYORTALK4) {
 			try {
-				BufferedImage mayortalk4 = ImageIO.read(new File("mayortalk4.jpg"));
-				panel.addImage(mayortalk4);
+				BufferedImage mayortalk3 = ImageIO.read(new File("mayorTalk4.jpg"));
+				panel.addImage(mayortalk3);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK3);
+				}
+			});
+			panel.addButton(back);*/
+
 			JButton goodbye = new JButton("Goodbye");
-			// goodbye.setPreferredSize(newDimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.TOWNHALL);
+					timeCheck = "told to find water source";
 				}
 			});
+			panel.addButton(goodbye);
 
 		}
 
@@ -1316,14 +1429,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.TOWNHALL);
+				}
+			});
+			panel.add(back);*/
+
 			JButton idk = new JButton("Admit you do not have an idea");
-			// idk.setPreferredSize(newDimension(90, 40));
 			idk.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK6);
 				}
 			});
+			panel.addButton(idk);
 
 		}
 
@@ -1334,15 +1456,25 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			timeCheck = "told to get idea";
+
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK5);
+				}
+			});
+			panel.add(back);
+*/
 			JButton goodbye = new JButton("Goodbye");
-			// goodbye.setPreferredSize(newDimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.TOWNHALL);
+					timeCheck = "told to get idea";
 				}
 			});
+			panel.addButton(goodbye);
 
 		}
 
@@ -1353,14 +1485,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK0);
+				}
+			});
+			panel.addButton(back);*/
+
 			JButton barrier = new JButton("Suggest building a barrier");
-			// barrier.setPreferredSize(newDimension(90, 40));
 			barrier.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK8);
 				}
 			});
+			panel.addButton(barrier);
 
 		}
 
@@ -1371,14 +1512,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.MAYORTALK7);
+				}
+			});
+			panel.addButton(back);*/
+
 			JButton epa = new JButton("Suggest getting funding from the EPA");
-			// epa.setPreferredSize(newDimension(90, 40));
 			epa.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.MAYORTALK9);
 				}
 			});
+			panel.addButton(epa);
 
 		}
 
@@ -1389,14 +1539,23 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
-			next.addActionListener(new ActionListener() {
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.BUILDTHATWALL);
 				}
 			});
+			panel.addButton(back);
+*/
+			JButton next = new JButton("Next");
+			next.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.LATER);
+				}
+			});
+			panel.addButton(next);
 
 		}
 
@@ -1407,8 +1566,7 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton back = new JButton("Back");
-			// back.setPreferredSize(newDimension(90, 40));
+			JButton back = new JButton("Back to Forest");
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1416,9 +1574,15 @@ public class Driver {
 				}
 			});
 
-			System.out.println("Click on the person to talk to them.");
-			MouseCoords dumpMan = new MouseCoords(84, 306, 84 + 144, 600, Place.DUMPTALK0);
-			panel.addMouseCoords(dumpMan);
+			JButton talkToJohn = new JButton("Talk to the dump manager");
+			talkToJohn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.DUMPTALK0);
+				}
+			});
+			panel.addButton(back);
+			panel.addButton(talkToJohn);
 
 		}
 
@@ -1430,10 +1594,17 @@ public class Driver {
 				e.printStackTrace();
 			}
 
-			if (timeCheck.equals("told to find water source")) {
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.DUMP);
+				}
+			});
+			panel.addButton(back);*/
 
-				JButton idea = new JButton("Ask about polluted water");
-				// idea.setPreferredSize(newDimension(90, 40));
+			if (timeCheck.equals("told to find water source")) {
+				JButton idea = new JButton("Ask if the dump is polluting the forest water");
 				idea.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1441,9 +1612,9 @@ public class Driver {
 					}
 				});
 				panel.addButton(idea);
-			} else if (timeCheck.equals("told to get idea")) {
+			}
+			if (timeCheck.equals("told to get idea")) {
 				JButton idea = new JButton("Ask for idea on runoff pollution prevention");
-				// idea.setPreferredSize(newDimension(90, 40));
 				idea.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1453,7 +1624,6 @@ public class Driver {
 				panel.addButton(idea);
 			}
 			JButton goodbye = new JButton("Goodbye");
-			// goodbye.setPreferredSize(newDimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1472,34 +1642,27 @@ public class Driver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton idea = new JButton("Ask about polluted water");
-			// idea.setPreferredSize(newDimension(90, 40));
-			idea.addActionListener(new ActionListener() {
+
+			/*JButton back = new JButton("Back");
+			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.DUMPTALK2);
+					Driver.load(Place.DUMPTALK0);
 					timeCheck = "know about dump runoff";
 				}
 			});
 			// panel.addButton(goodbye);
-			panel.addButton(idea);
-		}
+			panel.addButton(back);*/
 
-		else if (place == Place.DUMPTALK1) {
-			try {
-				BufferedImage dumptalk2 = ImageIO.read(new File("dumpTalk2.jpg"));
-				panel.addImage(dumptalk2);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			JButton idea = new JButton("Ask how to prevent");
-			// idea.setPreferredSize(newDimension(90, 40));
+			JButton idea = new JButton("Goodbye");
 			idea.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.DUMPTALK2);
+					Driver.load(Place.DUMP);
+					timeCheck = "know about dump runoff";
 				}
 			});
+			// panel.addButton(goodbye);
 			panel.addButton(idea);
 		}
 
@@ -1511,7 +1674,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton goodbye = new JButton("Goodbye");
-			// goodbye.setPreferredSize(newDimension(90, 40));
 			goodbye.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1519,6 +1681,24 @@ public class Driver {
 				}
 			});
 			panel.addButton(goodbye);
+		}
+
+		else if (place == Place.LATER) {
+			try {
+				BufferedImage later = ImageIO.read(new File("later.jpg"));
+				panel.addImage(later);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			JButton next = new JButton("Next");
+			next.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Driver.load(Place.BUILDTHATWALL);
+				}
+			});
+			panel.addButton(next);
 		}
 
 		else if (place == Place.BUILDTHATWALL) {
@@ -1529,7 +1709,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1547,7 +1726,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1565,7 +1743,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			// back.setPreferredSize(newDimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1573,15 +1750,15 @@ public class Driver {
 				}
 			});
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.END3);
 				}
 			});
-			panel.addButton(next);
 			panel.addButton(back);
+			panel.addButton(next);
+			
 		}
 
 		else if (place == Place.END3) {
@@ -1592,7 +1769,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			// back.setPreferredSize(newDimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1600,15 +1776,15 @@ public class Driver {
 				}
 			});
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.END4);
 				}
 			});
-			panel.addButton(next);
+			
 			panel.addButton(back);
+			panel.addButton(next);
 		}
 
 		else if (place == Place.END4) {
@@ -1619,7 +1795,6 @@ public class Driver {
 				e.printStackTrace();
 			}
 			JButton back = new JButton("Back");
-			// back.setPreferredSize(newDimension(90, 40));
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1627,26 +1802,25 @@ public class Driver {
 				}
 			});
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Driver.load(Place.LARGEBAGUETTEGAMES);
 				}
 			});
-			panel.addButton(next);
+			
 			panel.addButton(back);
+			panel.addButton(next);
 		}
 
 		else if (place == Place.LARGEBAGUETTEGAMES) {
 			try {
-				BufferedImage largebaguettegames = ImageIO.read(new File("largebaguettegames.png"));
+				BufferedImage largebaguettegames = ImageIO.read(new File("largebaguettegames.jpg"));
 				panel.addImage(largebaguettegames);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			JButton next = new JButton("Next");
-			// next.setPreferredSize(newDimension(90, 40));
 			next.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -1660,18 +1834,19 @@ public class Driver {
 			try {
 				BufferedImage youwin = ImageIO.read(new File("youwin.jpg"));
 				panel.addImage(youwin);
+				JButton returnHome = new JButton("Return Home");
+				returnHome.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						timeCheck="";
+						Driver.load(Place.HOMESCREEN);
+					}
+				});
+				panel.addButton(returnHome);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JButton returnHome = new JButton("Return Home");
-			// play.setPreferredSize(newDimension(90, 40));
-			returnHome.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Driver.load(Place.HOMESCREEN);
-				}
-			});
-			panel.addButton(returnHome);
+			
 		}
 
 	}
